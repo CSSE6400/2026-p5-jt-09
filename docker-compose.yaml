@@ -8,6 +8,8 @@ services:
       POSTGRES_PASSWORD: verySecretPassword
       POSTGRES_USER: administrator
       POSTGRES_DB: todo
+    volumes:
+      - ./data:/var/lib/postgresql
 
   app:
     build:

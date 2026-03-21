@@ -1,15 +1,15 @@
-FROM ubuntu:22.04
+FROM python:3.12-slim
 
 ENV SQLALCHEMY_DATABASE_URI=sqlite:///:memory:
 
 # Installing dependencies and cleaning up
 RUN apt-get update && \
-        apt-get install -y python3 python3-pip postgresql-client libpq-dev libcurl4-openssl-dev libssl-dev && \
+        apt-get install -y postgresql-client libpq-dev libcurl4-openssl-dev libssl-dev && \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/*
-		
-# Install pipenv
-RUN pip3 install poetry
+
+# Install poetry
+RUN pip install poetry
 
 # Setting the working directory
 WORKDIR /app
